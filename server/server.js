@@ -14,9 +14,12 @@ app.use(cors());
 // app.use('/uploads',express.static(path.resolve('uploads')));
 
 //* Routes
-// app.use("/auth", require("./routes/authRoutes"));
+app.use("/auth", require("./routes/authRoutes"));
 // app.use("/product", require("./routes/productRoutes"));
-// app.use("/user", require("./routes/userRoutes"));
+app.use("/user", require("./routes/userRoutes"));
+app.get("/",(req,res)=>{
+  res.status(200).json("Hello.")
+})
 
 //* Error Handling
 app.use((err, req, res, next) => {
