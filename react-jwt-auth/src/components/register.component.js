@@ -53,11 +53,13 @@ export default class Register extends Component {
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeRole = this.onChangeRole.bind(this);
 
     this.state = {
       username: "",
       email: "",
       password: "",
+      role: "merchant",
       successful: false,
       message: ""
     };
@@ -66,6 +68,12 @@ export default class Register extends Component {
   onChangeUsername(e) {
     this.setState({
       username: e.target.value
+    });
+  }
+
+  onChangeRole(e) {
+    this.setState({
+      role: e.target.value
     });
   }
 
@@ -95,6 +103,7 @@ export default class Register extends Component {
       AuthService.register(
         this.state.username,
         this.state.email,
+        this.state.role,
         this.state.password
       ).then(
         response => {
@@ -148,6 +157,14 @@ export default class Register extends Component {
                     onChange={this.onChangeUsername}
                     validations={[required, vusername]}
                   />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="role">Role</label>
+                  <select value={this.state.role} onChange={this.onChangeRole}  validations={[required]}>
+                    <option value="merchant">Merchant</option>
+                    <option value="buyer">Buyer</option>
+                  </select>
                 </div>
 
                 <div className="form-group">
