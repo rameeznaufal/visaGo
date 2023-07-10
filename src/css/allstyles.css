@@ -1,0 +1,32 @@
+.card {
+    position: relative;
+    display: flex;
+    width: 395px;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 7px;
+  }
+  
+  .light {
+    color: #7d7979;
+    font-size: 11px;
+  }
+
+
+  /* HIDE RADIO */
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + div {
+  border: 1px solid red;
+}
