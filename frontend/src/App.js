@@ -14,6 +14,7 @@ import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 import LeafletMap from "./components/LeafletMap";
+import Dashboard from "./components/Dashboard";
 
 
 class App extends Component {
@@ -56,7 +57,7 @@ class App extends Component {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand">
-            visaGo
+            <img src={require("./images/logov.png")} width="40" height="40" alt="logo"></img>
           </Link>
 
           <div className="navbar-nav mr-auto">
@@ -69,7 +70,7 @@ class App extends Component {
 
             {currentUser && currentUser.roles[0] === "MERCHANT" && (
             <li className="nav-item">
-              <Link to={""} className="nav-link">
+              <Link to={"/dash"} className="nav-link">
                 Dashboard
               </Link>
             </li>)}
@@ -139,6 +140,7 @@ class App extends Component {
         <div className="container mt-3">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/dash" element={<Dashboard />} />
             <Route path="/home" element={<LeafletMap />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
