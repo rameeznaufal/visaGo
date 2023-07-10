@@ -9,10 +9,12 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
+import MProfile from "./components/mprofile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 import LeafletMap from "./components/LeafletMap";
+
 
 class App extends Component {
   constructor(props) {
@@ -79,10 +81,8 @@ class App extends Component {
               </li>
             )}
 
-    
-          </div>
-
-          {currentUser ? (
+            {(currentUser) ? 
+            ((currentUser.roles[0] === "BUYER" ) ? (
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/profile"} className="nav-link">
@@ -95,21 +95,36 @@ class App extends Component {
                 </a>
               </li>
             </div>
-          ) : (
+             ) : (
+           <div className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to={"/mprofile"} className="nav-link">
+                  {currentUser.username}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <a href="/login" className="nav-link" onClick={this.logOut}>
+                  LogOut
+                </a>
+              </li>
+            </div>
+            )) : ( 
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/login"} className="nav-link">
                   Login
                 </Link>
               </li>
-
+          
               <li className="nav-item">
                 <Link to={"/register"} className="nav-link">
                   Sign Up
                 </Link>
               </li>
             </div>
-          )}
+            )}
+    
+          </div>
         </nav>
 
         <div className="container mt-3">
@@ -119,6 +134,7 @@ class App extends Component {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/mprofile" element={<MProfile />} />
             <Route path="/user" element={<BoardUser />} />
             <Route path="/mod" element={<BoardModerator />} />
             <Route path="/admin" element={<BoardAdmin />} />

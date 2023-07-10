@@ -24,6 +24,9 @@ module.exports = (sequelize, Sequelize) => {
       phone: {
         type: Sequelize.STRING
       },
+      transaction_points: {
+        type: Sequelize.INTEGER
+      },
       rating: {
         type: Sequelize.DOUBLE(2,1)
       },

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
-export default class Profile extends Component {
+export default class MProfile extends Component {
   constructor(props) {
     super(props);
 
@@ -39,19 +39,26 @@ export default class Profile extends Component {
           </h1>
     
         </header>
-
-        {currentUser.roles &&
+      
+          {currentUser.roles &&
             currentUser.roles.map((role, index) => (<p><i>{role}</i></p>))}
         
 
+        <h2>{currentUser.store_name}</h2>
+        <h4>{currentUser.rating}/10</h4>
+
+        <p><strong>"{currentUser.descp}"</strong></p>
+        <hr/>
+        
+        <p><strong>Address:</strong> {currentUser.address}</p>
+        <p><strong>Coordinates: </strong> ({currentUser.lat},{currentUser.lng})</p>
         <p>
           <strong>Email:</strong>{" "}
           {currentUser.email}
         </p>
         
-        <p><strong>address:</strong> {currentUser.address}</p>
         <p><strong>phone:</strong> {currentUser.phone}</p>
-        <p><strong>Reward Points</strong> {currentUser.transaction_points}</p>
+        
 
       </div>: null}
       </div>
