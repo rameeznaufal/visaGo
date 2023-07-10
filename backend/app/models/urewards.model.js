@@ -16,7 +16,10 @@ module.exports = (sequelize, Sequelize) => {
       },
       enddate: {
         type: Sequelize.DATE
-        }
+        },
+      uid: {
+        type: Sequelize.INTEGER
+      }
     });
   
     return Role;

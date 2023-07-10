@@ -34,7 +34,7 @@ db.user.belongsToMany(db.role, {
 });
 
 db.user.hasMany(db.urewards, {
-  foreignKey: 'id'
+  foreignKey: 'uid'
 });
 
 db.ROLES = ["merchant", "buyer", "admin"];
