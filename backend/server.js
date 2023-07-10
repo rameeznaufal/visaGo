@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 const db = require("./app/models");
+const rewards = db.rewards;
 const Role = db.role;
 
 db.sequelize.sync({force: true}).then(() => {
@@ -43,9 +44,12 @@ function initial() {
     name: "admin"
   });
 
-
+ merchant1 = null;
+  merchant2 = null;
+  merchant3 = null;
   //Sample users
   db.user.create({
+    id: 1,
     username: "rameez",
     email: "rameez@gmail.com",
     password: bcrypt.hashSync("rameez123", 8),
@@ -57,6 +61,7 @@ function initial() {
   });
 
   db.user.create({
+    id: 2,
     username: "anisha",
     email: "anisha@gmail.com",
     password: bcrypt.hashSync("anisha123", 8),
@@ -68,6 +73,7 @@ function initial() {
   });
 
   db.user.create({
+    id: 3,
     username: "akash",
     email: "akash@gmail.com",
     password: bcrypt.hashSync("akash123", 8),
@@ -80,9 +86,13 @@ function initial() {
     phone: "1234567890",
   }).then(user => {
     user.setRoles([1]);
+    merchant1 = user;
   });
 
+  
+
   db.user.create({
+    id: 4,
     username: "siftee",
     email: "siftee@gmail.com",
     password: bcrypt.hashSync("siftee123", 8),
@@ -98,6 +108,7 @@ function initial() {
   });
 
   db.user.create({
+    id: 5,
     username: "devang",
     email: "devang@gmail.com",
     password: bcrypt.hashSync("devang123", 8),
@@ -113,6 +124,7 @@ function initial() {
   });
 
   db.user.create({
+    id: 6,
     username: "sejal",
     email: "sejal@gmail.com",
     password: bcrypt.hashSync("sejal123", 8),
@@ -120,8 +132,58 @@ function initial() {
     phone: "1234567890",
     transaction_points: 998,
   }).then(user => {
-    user.setRoles([1]);
+    user.setRoles([2]);
   });
+
+  db.mrewards.create({
+    title: "Buy 1 Get 1 Free",
+    descr: "Buy 1 Get 1 Free on all products",
+    category: "Reward",
+    enddate: "2021-05-31",
+    uid: 3,
+  });
+
+  db.mrewards.create({
+    title: "50% off on all products",
+    descr: "50% off on all products",
+    category: "Discount",
+    enddate: "2021-05-31",
+    uid: 3,
+  });
+
+  db.mrewards.create({
+    title: "500Rs Cashback",
+    descr: "500Rs Cashback on all products",
+    category: "Cashback",
+    enddate: "2021-05-31",
+    uid: 3,
+  });
+
+  db.mrewards.create({
+    title: "Buy 1 Get 1 Free",
+    descr: "Buy 1 Get 1 Free on all products",
+    category: "Reward",
+    enddate: "2021-05-31",
+    uid: 4,
+  });
+
+  db.mrewards.create({
+    title: "50% off on all products",
+    descr: "50% off on all products",
+    category: "Discount",
+    enddate: "2021-05-31",
+    uid: 5,
+  });
+
+  db.mrewards.create({
+    title: "500Rs Cashback",
+    descr: "500Rs Cashback on all products",
+    category: "Cashback",
+    enddate: "2021-05-31",
+    uid: 4,
+  });
+
+
 
 }
 

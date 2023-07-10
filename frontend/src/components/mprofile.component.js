@@ -1,6 +1,45 @@
 import React, { Component } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, json } from "react-router-dom";
 import AuthService from "../services/auth.service";
+import Card from "./Card/Card.js";
+import "../css/allstyles.css"
+import CardHeader from "./Card/CardHeader.js";
+import Table from "./Table/Table.js";
+import CardIcon from "./Card/CardIcon.js";
+import { makeStyles } from "@material-ui/core/styles";
+import CardBody from "./Card/CardBody.js";
+import CardFooter from "./Card/CardFooter.js";
+
+import styles from "d:/Projects/visaGo/frontend/src/components/Card/assets/jss/material-dashboard-react/views/dashboardStyle.js";
+
+const useStyles = makeStyles(styles);
+
+
+const Offers = function(props)  {
+  const classes = useStyles();
+  console.log(props.rewards);
+  return (
+  <Card>
+  <CardHeader color="rose">
+    <h4 className={classes.cardTitleWhite}>Merchant Offers Offered</h4>
+    <p className={classes.cardCategoryWhite}>
+      *would be expired after the end date
+    </p>
+  </CardHeader>
+  <CardBody>
+    <Table
+      tableHeaderColor="primary"
+      tableHead={["ID", "Title", "Category", "Description", "End Date"]}
+      tableData={props.rewards.rew.map((offer)=>[offer.id, 
+                                                offer.title, 
+                                                offer.category, 
+                                                offer.descr, 
+                                                offer.enddate])}
+    />
+  </CardBody>
+</Card>
+);
+}
 
 export default class MProfile extends Component {
   constructor(props) {
@@ -26,7 +65,7 @@ export default class MProfile extends Component {
     }
 
     const { currentUser } = this.state;
-
+    
     return (
       <div className="container">
         {(this.state.userReady) ?
@@ -58,6 +97,9 @@ export default class MProfile extends Component {
         </p>
         
         <p><strong>phone:</strong> {currentUser.phone}</p>
+        <hr/>
+        <br/>
+        <Offers rewards = {currentUser}/>
         
 
       </div>: null}

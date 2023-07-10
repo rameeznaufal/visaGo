@@ -17,6 +17,7 @@ import LeafletMap from "./components/LeafletMap";
 import Dashboard from "./components/Dashboard";
 
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -54,10 +55,10 @@ class App extends Component {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
 
     return (
-      <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
+      <div class="cont">
+        <nav className="navbar navbar-expand navbar-dark" >
           <Link to={"/"} className="navbar-brand">
-            <img src={require("./images/logov.png")} width="40" height="40" alt="logo"></img>
+            <img src={require("./images/logov.png")}  width="150" height="35" alt="logo"></img>
           </Link>
 
           <div className="navbar-nav mr-auto">

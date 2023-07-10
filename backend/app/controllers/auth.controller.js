@@ -2,6 +2,7 @@ const db = require("../models");
 const config = require("../config/auth.config");
 const User = db.user;
 const Role = db.role;
+const Rewards = db.mrewards;
 
 const Op = db.Sequelize.Op;
 
@@ -70,10 +71,24 @@ exports.signin = (req, res) => {
                               });
 
       var authorities = [];
+      var Rew = [];
       user.getRoles().then(roles => {
         for (let i = 0; i < roles.length; i++) {
           authorities.push(roles[i].name.toUpperCase());
         }
+      });
+       Rewards.findAll({
+        where: {
+          uid: user.id
+        }
+      }).then(rewards => {
+        for (let i = 0; i < rewards.length; i++) {
+          //console.log(rewards[i]);
+          Rew.push(rewards[i]);
+        }
+      
+
+
         
         res.status(200).send({
           id: user.id,
@@ -86,6 +101,7 @@ exports.signin = (req, res) => {
           phone: user.phone,
           transaction_points: user.transaction_points,
           rating: user.rating,
+          rew: Rew,
           descp: user.descp,
           roles: authorities,
           accessToken: token

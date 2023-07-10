@@ -27,6 +27,11 @@ input[type="radio"] {
   display: none;
 }
 
+.container {
+  padding: 2%;
+  background: #9d98981e;
+}
+
 input[type="radio"]:checked + div {
   border: 1px solid red;
 }

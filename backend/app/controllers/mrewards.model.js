@@ -1,10 +1,6 @@
 
 module.exports = (sequelize, Sequelize) => {
-    const Role = sequelize.define("urewards", {
-      id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true
-      },
+    const Role = sequelize.define("mrewards", {
       title: {
         type: Sequelize.STRING
       },
@@ -15,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       enddate: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
         },
       uid: {
         type: Sequelize.INTEGER
@@ -24,4 +20,3 @@ module.exports = (sequelize, Sequelize) => {
   
     return Role;
   };
-  

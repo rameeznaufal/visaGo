@@ -6,6 +6,53 @@ label {
 .card-container.card {
   max-width: 350px !important;
   padding: 40px 40px;
+  
+}
+
+.cont {
+  padding-top: 5%;
+}
+
+.navbar {
+  background-color: #0a154d;
+  padding-left: 1%;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  overflow: hidden;
+  z-index: 30;
+
+  width: 100%; 
+  margin: auto;
+  top: 0;
+
+  position: fixed;
+  top: 0;
+
+  /* box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25); */
+  box-shadow: 12px 0 15px -4px rgba(31, 73, 125, 0.8),
+    -12px 0 8px -4px rgba(31, 73, 125, 0.8);
+  box-shadow: 0 2px 0px 0px rgb(231, 231, 36), 0 -9px 0px 0px white,
+    12px 0 15px -4px rgba(31, 73, 125, 0.8),
+    -12px 0 15px -4px rgba(31, 73, 125, 0.8);
+}
+
+
+.home {
+  width: 100%;
+  position: absolute;
+  top: 8.5%;
+  left: 0;
+  padding: 0%;
+  margin: 0%;
+  size: 100%;
 }
 
 .card {

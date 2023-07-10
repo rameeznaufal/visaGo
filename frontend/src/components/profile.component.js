@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
+import "../css/allstyles.css"
 import AuthService from "../services/auth.service";
 
 export default class Profile extends Component {
