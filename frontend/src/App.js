@@ -58,12 +58,21 @@ class App extends Component {
           <Link to={"/"} className="navbar-brand">
             visaGo
           </Link>
+
           <div className="navbar-nav mr-auto">
+          {currentUser && currentUser.roles[0] === "BUYER" && ( 
             <li className="nav-item">
               <Link to={"/home"} className="nav-link">
-                Home
+                Explore!
               </Link>
-            </li>
+            </li>)}
+
+            {currentUser && currentUser.roles[0] === "MERCHANT" && (
+            <li className="nav-item">
+              <Link to={""} className="nav-link">
+                Dashboard
+              </Link>
+            </li>)}
 
             {showModeratorBoard && (
               <li className="nav-item">
