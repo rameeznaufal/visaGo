@@ -4,10 +4,10 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:3000"
 };
 
-require('dotenv').config()
+//require('dotenv').config()
 
 app.use(cors(corsOptions));
 
@@ -29,12 +29,12 @@ db.sequelize.sync({force: true}).then(() => {
 function initial() {
   Role.create({
     id: 1,
-    name: "user"
+    name: "merchant"
   });
  
   Role.create({
     id: 2,
-    name: "moderator"
+    name: "buyer"
   });
  
   Role.create({

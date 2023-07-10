@@ -8,6 +8,27 @@ module.exports = (sequelize, Sequelize) => {
       },
       password: {
         type: Sequelize.STRING
+      },
+      store_name: {
+        type: Sequelize.STRING
+      },
+      lat: {
+        type: Sequelize.DOUBLE
+      },
+      lng: {
+        type: Sequelize.DOUBLE
+      },
+      address: {
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
+      rating: {
+        type: Sequelize.DOUBLE(2,1)
+      },
+      descp: {
+        type: Sequelize.STRING
       }
     });
   

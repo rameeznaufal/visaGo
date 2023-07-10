@@ -16,21 +16,19 @@ exports.signup = (req, res) => {
     password: bcrypt.hashSync(req.body.password, 8)
   })
     .then(user => {
-      if (req.body.roles) {
+      if (req.body.role) {
         Role.findAll({
           where: {
-            name: {
-              [Op.or]: req.body.roles
-            }
+            name: req.body.role
           }
-        }).then(roles => {
-          user.setRoles(roles).then(() => {
+        }).then(role => {
+          user.setRoles(role).then(() => {
             res.send({ message: "User was registered successfully!" });
           });
         });
       } else {
-        // user role = 1
-        user.setRoles([1]).then(() => {
+        // user role = 2 (buyer)
+        user.setRoles([2]).then(() => {
           res.send({ message: "User was registered successfully!" });
         });
       }
@@ -76,6 +74,7 @@ exports.signin = (req, res) => {
         for (let i = 0; i < roles.length; i++) {
           authorities.push("ROLE_" + roles[i].name.toUpperCase());
         }
+        
         res.status(200).send({
           id: user.id,
           username: user.username,

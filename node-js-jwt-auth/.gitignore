@@ -12,6 +12,8 @@
 /build
 
 # misc
+
+/app/config.js/db.config.js
 .env
 .DS_Store
 .env.local
